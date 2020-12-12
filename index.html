@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const elements = ['ROCK', 'PAPER', 'SCISSORS']
+        
+        function elementSelection() {
+            return prompt("Choose rock, paper, or scissors").toUpperCase()
+        }
+
+        function computerPlay() {
+            const random = Math.floor(Math.random() * 3) 
+            return elements[random]
+        }
+
+        function playRound(playerWins, computerWins) {
+            const computerSelection = computerPlay()
+            const playerSelection = elementSelection();
+            const lose = "You lose this round! You chose " + playerSelection + " and the computer chose " + computerSelection
+            const win = "You win this round! You chose " + playerSelection + " and the computer chose " + computerSelection
+            const tie = "It's a tied round! You both chose " + playerSelection
+
+            if(playerSelection==='ROCK') {
+                if(computerSelection==='PAPER') {
+                    computerWins ++
+                    return lose
+                } else if(computerSelection==='SCISSORS'){
+                    playerWins++
+                    return win
+                } else {
+                    return tie
+                }
+            }
+
+            if(playerSelection==='PAPER') {
+                if(computerSelection==='SCISSORS') {
+                    computerWins++
+                    return lose
+                } else if(computerSelection==='ROCK'){
+                    playerWins++
+                    return win
+                } else {
+                    return tie
+                }
+            }
+
+            if(playerSelection==='SCISSORS') {
+                if(computerSelection==='ROCK') {
+                    computerWins++
+                    return lose
+                } else if(computerSelection==='PAPER'){
+                    playerWins++
+                    return win
+                } else {
+                    return tie
+                }
+            }
+        }
+
+        function determineWinner(playerWins, computerWins) {
+            if(playerWins > computerWins) {
+                return "Congrats! You won the game!"
+            } else if(computerWins > playerWins) {
+                return "Oh, no! The computer defeated you this game!"
+            } else {
+                return "Holy Cow! The game ended in a tie"
+            }
+        }
+
+        function game() {
+            let round = 0
+            let playerWins = 0
+            let computerWins = 0
+
+            while(round<5){
+                round++
+                console.log(playRound(playerWins, computerWins))
+            }
+
+            console.log(determineWinner(playerWins, computerWins))
+        }
+        
+        game()
+    </script>
+</body>
+</html>

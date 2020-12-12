@@ -8,19 +8,10 @@
 <body>
     <script> 
 
-        // function incorrectInput(response) {
-        //     if(response !== "ROCK" || response !== "PAPER" || response !== "SCISSORS") {
-        //         alert("It would seem you entered a selection that isn't viable. We're playing 'Rock, Paper, Scissors' here not 'Rock, Paper, " + response + ".' Let's try this again, okay?")
-        //     }
-        //     // playRound()
-        // }
+        let round = 0
 
         function elementSelection() {
-            // const response;
             return prompt("Choose rock, paper, or scissors").toUpperCase()
-            // if(response === "ROCK" || response === "PAPER" || response === "SCISSORS") {
-            //     return response
-            // } 
         }
 
         function computerPlay() {
@@ -29,7 +20,7 @@
             return elements[index]
         }
 
-        function playRound(playerWins, computerWins, round) {
+        function playRound(playerWins, computerWins) {
             const computerSelection = computerPlay()
             const playerSelection = elementSelection();
             const lose = "You lose this round! You chose " + playerSelection + " and the computer chose " + computerSelection
@@ -89,13 +80,12 @@
         }
 
         function game() {
-            let round = 0
             let playerWins = 0
             let computerWins = 0
 
-            while(round<=5){
-                console.log(playRound(playerWins, computerWins, round))
+            while(round<5){
                 round++
+                console.log(playRound(playerWins, computerWins))
             }
             
             console.log(determineWinner(playerWins, computerWins))
